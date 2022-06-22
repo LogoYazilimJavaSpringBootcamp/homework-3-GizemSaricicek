@@ -28,5 +28,4 @@ public class Order {
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
-
 }
