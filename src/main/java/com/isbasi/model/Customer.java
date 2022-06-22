@@ -1,5 +1,7 @@
 package com.isbasi.model;
 
+import lombok.Data;
+
 import java.util.List;
 
 public class Customer {
@@ -7,11 +9,13 @@ public class Customer {
     private String name;
     private int age;
     private List<Order> orderList;
+    private String status;
 
-    public Customer(String name, int age, List<Order> orderList) {
+    public Customer(String name, int age, String status,List<Order> orderList) {
         super();
         this.name = name;
         this.age = age;
+        this.status = status;
         this.orderList = orderList;
     }
 
@@ -37,5 +41,13 @@ public class Customer {
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

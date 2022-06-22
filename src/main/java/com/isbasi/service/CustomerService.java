@@ -1,5 +1,6 @@
 package com.isbasi.service;
 
+import com.isbasi.Repository.CustomerRepository;
 import com.isbasi.model.Customer;
 import com.isbasi.model.Order;
 import com.isbasi.model.Product;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -19,6 +21,9 @@ public class CustomerService {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
     public CustomerService(OrderService orderService) {
         this.orderService = orderService;
     }
@@ -28,7 +33,7 @@ public class CustomerService {
     }
 
     public Customer create(String name) {
-        Customer customer = new Customer(name, 25, new ArrayList<>());
+        Customer customer = new Customer(name, 25, "passive", new ArrayList<>());
 
         System.out.println("orderService:" + orderService.toString());
         // orderService.createOrder();
@@ -40,12 +45,12 @@ public class CustomerService {
 
     private List<Customer> prepareCustomerList() {
         List<Customer> customers = new ArrayList<>();
-        customers.add(new Customer("bilisim.io", 25, new ArrayList<>()));
-        customers.add(new Customer("cem", 30, prepareOrderList()));
-        customers.add(new Customer("ömer", 21, prepareOrderList()));
-        customers.add(new Customer("haluk", 32, prepareOrderList()));
-        customers.add(new Customer("halil", 25, prepareOrderList()));
-        customers.add(new Customer("fatih", 18, prepareOrderList()));
+        customers.add(new Customer("bilisim.io", 25, "active", new ArrayList<>()));
+        customers.add(new Customer("cem", 30, "active", prepareOrderList()));
+        customers.add(new Customer("ömer", 21, "passive", prepareOrderList()));
+        customers.add(new Customer("haluk", 32, "active", prepareOrderList()));
+        customers.add(new Customer("halil", 25, "passive",prepareOrderList()));
+        customers.add(new Customer("fatih", 18,  "active",prepareOrderList()));
         return customers;
     }
 
@@ -75,12 +80,27 @@ public class CustomerService {
 
         // ProductService productService = new ProductService;
         // singleton olduğunun kanıtı
-        System.out.println("CustomerService - productService:" + productService.toString());
-        System.out.println("CustomerService - productService:" + productService.url);
-        System.out.println("CustomerService - orderService:" + orderService.toString());
+        //System.out.println("CustomerService - productService:" + productService.toString());
+        //System.out.println("CustomerService - productService:" + productService.url);
+        //System.out.println("CustomerService - orderService:" + orderService.toString());
+        //orderService.createOrder();
+        //return prepareCustomerList();
 
-        orderService.createOrder();
+        return customerRepository.findAll();
+    }
 
-        return prepareCustomerList();
+    public Customer createCustomer(Customer request) { //yeni bir customer oluşturulması için metod
+
+        return customerRepository.save(request);
+    }
+
+    public Customer getByStatus(String requestStatus) { //status'e göre customer aramak için metod
+        boolean isPresent = customerRepository.findAllByStatus(requestStatus).isPresent();
+        if(isPresent){
+            return customerRepository.findAllByStatus(requestStatus).get();
+        }
+        else{
+            return null; //best practice'de null return etmemeliyiz.
+        }
     }
 }
