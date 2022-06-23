@@ -25,7 +25,7 @@ public class TillRepository {
     public Till updateByName(Till tillRequest) {
 
         for(Till item: tillList) { // liste geziliyor.
-            if(item.getTillName() == tillRequest.getTillName()){ // hesap numarası uyan varsa
+            if(item.getTillName() == tillRequest.getTillName()){ // ismi uyan varsa
                 item.setOpeningBalance(tillRequest.getOpeningBalance()); //update işlemleri yapılıyor.
                 item.setForeignCurrency(tillRequest.getForeignCurrency());
                 item.setOpenDate(tillRequest.getOpenDate());
@@ -34,12 +34,12 @@ public class TillRepository {
         return tillRequest;
     }
 
-    public List<Till> deleteByOpenDate(LocalDateTime openDate) {
+    public List<Till> deleteByName(String name) { //hata var
 
         for(Till item: tillList) { // liste geziliyor.
-            //if(item.getOpenDate() == openDate){ // open date uyan varsa
-              //  tillList.remove(item); //list'ten siliniyor.
-            //}
+            if(name.equals(item.getTillName())){ // name uyan varsa
+                tillList.remove(item); //list'ten siliniyor.
+            }
         }
         return tillList; //silinmiş hali ile kasa listesi dönüyor.
     }

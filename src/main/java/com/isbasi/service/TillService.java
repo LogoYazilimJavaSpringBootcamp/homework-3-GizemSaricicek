@@ -25,7 +25,7 @@ public class TillService {
         return tillRepository.updateByName(tillRequest);
     }
 
-    public List<Till> delete(LocalDateTime openDate) {
-        return tillRepository.deleteByOpenDate(openDate);
+    public List<Till> delete(String name) {
+        return tillRepository.deleteByName(name);
     }
 }

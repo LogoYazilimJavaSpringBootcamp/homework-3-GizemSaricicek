@@ -30,8 +30,8 @@ public class TillController {
         return tillService.update(tillRequest);
     }
 
-    @DeleteMapping
-    public List<Till> deleteTill(@PathVariable LocalDateTime openDate){
-        return tillService.delete(openDate);
+    @DeleteMapping(value = "/{tillName}")
+    public List<Till> deleteTill(@PathVariable String tillName){
+        return tillService.delete(tillName);
     }
 }
