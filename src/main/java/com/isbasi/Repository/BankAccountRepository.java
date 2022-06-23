@@ -36,6 +36,6 @@ public class BankAccountRepository {
                 bankAccountList.remove(item); //list'ten çıkarılıyor.
             }
         }
-        return bankAccountList; //silinmiş hali ile hesap listesi dönüuyor.
+        return bankAccountList; //silinmiş hali ile hesap listesi dönüyor.
     }
 }
