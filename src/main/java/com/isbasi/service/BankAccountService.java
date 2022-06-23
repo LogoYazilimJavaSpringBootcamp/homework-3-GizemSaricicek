@@ -12,11 +12,19 @@ public class BankAccountService {
 
     @Autowired
     BankAccountRepository bankAccountRepository;
-    public BankAccount createBankAccount(BankAccount bankAccountRequest) {
+    public BankAccount createBankAccount(BankAccount bankAccountRequest) { //banka hesabı yaratma
         return bankAccountRepository.save(bankAccountRequest);
     }
 
-    public List<BankAccount> getAllBankAccount() {
+    public List<BankAccount> getAllBankAccount() { //banka hesaplarını görüntüleme
         return bankAccountRepository.findAll();
+    }
+
+    public BankAccount updateBankAccount(BankAccount bankAccountRequest) { //banka hesaplarını gğncelleme
+        return bankAccountRepository.update(bankAccountRequest);
+    }
+
+    public List<BankAccount> deleteBankAccount(long accountNo){ //banka hesabı silme
+        return bankAccountRepository.delete(accountNo);
     }
 }
