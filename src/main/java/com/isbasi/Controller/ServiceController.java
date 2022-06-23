@@ -16,22 +16,22 @@ public class ServiceController {
     @Autowired
     ServiceService serviceService;
 
-    @PostMapping
+    @PostMapping // yeni servis oluşturmak için endpoint
     public Service createService(@RequestBody Service serviceRequest){
         return serviceService.create(serviceRequest);
     }
 
-    @GetMapping
+    @GetMapping //tüm servisleri görüntülemek için endpoint
     public List<Service> getAllService(){
         return serviceService.getAll();
     }
 
-    @PutMapping
+    @PutMapping //servis güncellemek için endpoint
     public Service updateService(@RequestBody Service serviceRequest){
         return serviceService.update(serviceRequest);
     }
 
-    @DeleteMapping(value = "/{serviceCode}")
+    @DeleteMapping(value = "/{serviceCode}") //servis koduna göre servis silmek için endpoint
     public List<Service> deleteService(@PathVariable String serviceCode){
         return serviceService.delete(serviceCode);
     }

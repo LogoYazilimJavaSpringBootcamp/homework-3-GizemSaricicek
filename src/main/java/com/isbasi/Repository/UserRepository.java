@@ -17,7 +17,7 @@ public class UserRepository {
         request.getCustomerList().add(new Customer("Onur", 23,"active", new ArrayList<>()));
         request.getCustomerList().add(new Customer("Gizem", 23, "passive", new ArrayList<>()));
         request.getCustomerList().add(new Customer("Ceylan", 23, "active",  new ArrayList<>()));
-        userList.add(request);
+        userList.add(request); // user ekleme
         return request;
     }
 
@@ -25,7 +25,7 @@ public class UserRepository {
         return userList;
     }
 
-    public Optional<User> findByEmail(String email) {
+    public Optional<User> findByEmail(String email) {  //emaile göre customer getirme metodu
         return userList.stream().filter(user -> user.getEmail().equals(email)).findFirst();
     }
 }

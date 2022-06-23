@@ -30,12 +30,12 @@ public class BankAccountRepository {
         return account;
     }
 
-    public List<BankAccount> delete(long accountNo) { //hesap numarasına göre banka hesabı silen metod
-        for(BankAccount item: bankAccountList) { //liste geziliyor.
-            if(item.getAccountNo() == accountNo){ //eğer girilen hesap numarası varsa
-                bankAccountList.remove(item); //list'ten çıkarılıyor.
+    public List<BankAccount> delete(long accountNo) {
+        for(BankAccount item: bankAccountList) {
+            if(item.getAccountNo() == accountNo){
+                bankAccountList.remove(item);
             }
         }
-        return bankAccountList; //silinmiş hali ile hesap listesi dönüyor.
+        return bankAccountList;
     }
 }

@@ -1,6 +1,5 @@
 package com.isbasi.Repository;
 
-import com.isbasi.model.BankAccount;
 import com.isbasi.model.Service;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +11,7 @@ public class ServiceRepository {
 
     public List<Service> serviceList = new ArrayList<>();
     public Service save(Service serviceRequest) {
-        serviceList.add(serviceRequest);
+        serviceList.add(serviceRequest); //yeni servis ekleniyor
         return serviceRequest;
     }
 

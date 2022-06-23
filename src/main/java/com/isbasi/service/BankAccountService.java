@@ -18,7 +18,7 @@ public class BankAccountService {
 
     public List<BankAccount> getAllBankAccount() { //banka hesaplarını görüntüleme
         return bankAccountRepository.findAll();
-    }
+    } //banka hesabı gösterme
 
     public BankAccount updateBankAccount(BankAccount bankAccountRequest) { //banka hesaplarını gğncelleme
         return bankAccountRepository.update(bankAccountRequest);

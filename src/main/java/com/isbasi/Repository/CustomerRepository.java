@@ -11,7 +11,7 @@ import java.util.Optional;
 public class CustomerRepository {
 
     private static List<Customer> customerList = new ArrayList<>();
-    public Customer save(Customer request) {
+    public Customer save(Customer request) { //customer oluşturmak için metod
         customerList.add(request);
         return request;
     }
@@ -20,16 +20,34 @@ public class CustomerRepository {
         return customerList;
     }
 
-    public Optional<Customer> findAllByStatus(String requestStatus) {
-        return customerList.stream().filter(customer -> customer.getStatus().equals(requestStatus)).findFirst();
+    public List<Customer> findAllByStatus(String requestStatus) { //statuse göre customer döndürmek için metod
+        List<Customer> statusCustomerList = new ArrayList<>();
+        for (Customer item : customerList) {
+            if(item.getStatus().equals(requestStatus)){
+                statusCustomerList.add(item);
+            }
+        }
+        return statusCustomerList;
     }
 
-//    public void deleteByName(String name) {
-//        customerList.remove(findByName(name));
-//    }
+    public Customer updateByName(Customer customerRequest) {
+        for(Customer item: customerList) { // liste geziliyor.
+            if(item.getName().equals(customerRequest.getName())){ // hesap numarası uyan varsa
+                item.setName(customerRequest.getName()); //update işlemleri yapılıyor.
+                item.setAge(customerRequest.getAge());
+                item.setStatus(customerRequest.getStatus());
+            }
+        }
+        return customerRequest;
+    }
 
-//    public Optional<Customer> findByName(String name) {
-//        return customerList.stream().filter(customer -> customer.getName().equals(name)).findFirst();
-//
-//    }
+    public List<Customer> deleteByStatus(String status) { //status'e göre silme yapacak metod
+        for(Customer item: customerList) {
+            if(item.getStatus().equals(status)){
+                customerList.remove(item);
+            }
+        }
+        return customerList;
+    }
+
 }

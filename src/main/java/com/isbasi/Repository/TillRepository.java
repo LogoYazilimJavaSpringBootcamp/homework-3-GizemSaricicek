@@ -1,10 +1,8 @@
 package com.isbasi.Repository;
 
-import com.isbasi.model.Service;
 import com.isbasi.model.Till;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class TillRepository {
     List<Till> tillList = new ArrayList<>();
 
     public Till save(Till tillRequest) {
-        tillList.add(tillRequest);
+        tillList.add(tillRequest); //yeni kasa ekleniyor
         return tillRequest;
     }
 

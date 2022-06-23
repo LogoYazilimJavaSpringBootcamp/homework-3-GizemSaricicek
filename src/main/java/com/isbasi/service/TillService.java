@@ -15,17 +15,17 @@ public class TillService {
     TillRepository tillRepository;
     public Till create(Till tillRequest) {
         return tillRepository.save(tillRequest);
-    }
+    } //banka yaratma
 
-    public List<Till> getAllTill() {
+    public List<Till> getAllTill() { //banka görüntüleme
         return tillRepository.findAll();
     }
 
     public Till update(Till tillRequest) {
         return tillRepository.updateByName(tillRequest);
-    }
+    } //banka güncelleme
 
     public List<Till> delete(String name) {
         return tillRepository.deleteByName(name);
-    }
+    } //kasa silme
 }

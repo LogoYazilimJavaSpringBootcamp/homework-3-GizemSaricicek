@@ -21,22 +21,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping
+    @PostMapping //yeni user oluşturmak için endpoint
     public User createUser(@RequestBody User userRequest) {
         return userService.createUser(userRequest);
     }
 
-    @GetMapping
+    @GetMapping //tüm user'ları görüntülemek için endpoint
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
 
-    @GetMapping(value = "/{email}")
+    @GetMapping(value = "/{email}") //email'e göre user görüntülemek için endpoint
     public User getUserByEmail(@PathVariable String email) {
         return userService.getUserByEmail(email);
     }
 
-    @GetMapping(value = "/{email}/customers")
+    @GetMapping(value = "/{email}/customers") //girilen emaile sahip user'ların customer'larını görüntülemek için endpoint
     public List<Customer> getCustomersUserByEmail(@PathVariable String email) {
         return userService.getCustomersByEmail(email);
     }

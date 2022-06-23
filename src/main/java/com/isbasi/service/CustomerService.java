@@ -1,6 +1,7 @@
 package com.isbasi.service;
 
 import com.isbasi.Repository.CustomerRepository;
+import com.isbasi.model.BankAccount;
 import com.isbasi.model.Customer;
 import com.isbasi.model.Order;
 import com.isbasi.model.Product;
@@ -94,14 +95,20 @@ public class CustomerService {
         return customerRepository.save(request);
     }
 
-    public Customer getByStatus(String requestStatus) { //status'e göre customer aramak için metod
-        boolean isPresent = customerRepository.findAllByStatus(requestStatus).isPresent();
-        if(isPresent){
-            return customerRepository.findAllByStatus(requestStatus).get();
-        }
-        else{
-            return null; //best practice'de null return etmemeliyiz.
-        }
+    public List<Customer> getByStatus(String requestStatus) { //status'e göre customer aramak için metod
+
+        return customerRepository.findAllByStatus(requestStatus);
+
+    }
+
+    public Customer updateCustomer(Customer customerRequest) { //customer güncelleme
+        return customerRepository.updateByName(customerRequest);
+
+    }
+
+    public List<Customer> deleteCustomer(String status) { //customer silme
+        return customerRepository.deleteByStatus(status);
+
     }
 //    public void deleteCustomerByName(String name){
 //        boolean isPresent = customerRepository.findByName(name).isPresent();

@@ -15,22 +15,22 @@ public class TillController {
     @Autowired
     TillService tillService;
 
-    @PostMapping
+    @PostMapping //yeni bir kasa oluşturmak için endpoint
     public Till createTill(@RequestBody Till tillRequest){
         return tillService.create(tillRequest);
     }
 
-    @GetMapping
+    @GetMapping //tüm kasaları görüntülemek için endpoint
     public List<Till> getAllTill(){
         return tillService.getAllTill();
     }
 
-    @PutMapping
+    @PutMapping // kasa güncellemesi yapmak için endpoint
     public Till updateTill(@RequestBody Till tillRequest){
         return tillService.update(tillRequest);
     }
 
-    @DeleteMapping(value = "/{tillName}")
+    @DeleteMapping(value = "/{tillName}") //kasa ismine göre silme işlemi yapmak için endpoint
     public List<Till> deleteTill(@PathVariable String tillName){
         return tillService.delete(tillName);
     }

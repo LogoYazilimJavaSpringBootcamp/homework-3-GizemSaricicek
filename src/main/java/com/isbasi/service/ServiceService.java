@@ -13,17 +13,17 @@ public class ServiceService {
     ServiceRepository serviceRepository;
     public Service create(Service serviceRequest) {
         return serviceRepository.save(serviceRequest);
-    }
+    } //servis yaratma
 
-    public List<Service> getAll() {
+    public List<Service> getAll() { //servis görüntüleme
         return serviceRepository.findAll();
     }
 
-    public Service update(Service serviceRequest) {
+    public Service update(Service serviceRequest) { //servis güncelleme
         return serviceRepository.updateByCode(serviceRequest);
     }
 
     public List<Service> delete(String serviceCode) {
         return serviceRepository.deleteByCode(serviceCode);
-    }
+    } //servis silme
 }
