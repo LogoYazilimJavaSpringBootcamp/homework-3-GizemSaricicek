@@ -103,4 +103,10 @@ public class CustomerService {
             return null; //best practice'de null return etmemeliyiz.
         }
     }
+//    public void deleteCustomerByName(String name){
+//        boolean isPresent = customerRepository.findByName(name).isPresent();
+//        if(isPresent){
+//            customerRepository.deleteByName(name);
+//        }
+//    }
 }

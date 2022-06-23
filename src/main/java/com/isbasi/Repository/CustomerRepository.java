@@ -23,4 +23,13 @@ public class CustomerRepository {
     public Optional<Customer> findAllByStatus(String requestStatus) {
         return customerList.stream().filter(customer -> customer.getStatus().equals(requestStatus)).findFirst();
     }
+
+//    public void deleteByName(String name) {
+//        customerList.remove(findByName(name));
+//    }
+
+//    public Optional<Customer> findByName(String name) {
+//        return customerList.stream().filter(customer -> customer.getName().equals(name)).findFirst();
+//
+//    }
 }

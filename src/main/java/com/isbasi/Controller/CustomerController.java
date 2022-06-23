@@ -4,6 +4,8 @@ import com.isbasi.model.Customer;
 import com.isbasi.model.User;
 import com.isbasi.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,4 +32,10 @@ public class CustomerController {
         return customerService.getByStatus(status);
 
     }
+
+//    @DeleteMapping("/delete/{name}")
+//    public ResponseEntity<Void> deleteCustomerById(@PathVariable("name") String name){
+//        customerService.deleteCustomerByName(name);
+//        return new ResponseEntity<Void>(HttpStatus.ACCEPTED);
+//    }
 }
