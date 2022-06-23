@@ -8,9 +8,9 @@ public class Till {
     private String tillName;
     private String foreignCurrency;
     private LocalDateTime openDate;
-    private double openingBalance; // açılış bakiyesi
+    private Double openingBalance; // açılış bakiyesi
 
-    public Till(String tillName, String foreignCurrency, LocalDateTime openDate, double openingBalance) {
+    public Till(String tillName, String foreignCurrency, LocalDateTime openDate, Double openingBalance) {
         this.tillName = tillName;
         this.foreignCurrency = foreignCurrency;
         this.openDate = openDate;
@@ -41,11 +41,11 @@ public class Till {
         this.openDate = openDate;
     }
 
-    public double getOpeningBalance() {
+    public Double getOpeningBalance() {
         return openingBalance;
     }
 
-    public void setOpeningBalance(double openingBalance) {
+    public void setOpeningBalance(Double openingBalance) {
         this.openingBalance = openingBalance;
     }
 }
